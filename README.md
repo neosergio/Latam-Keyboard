@@ -11,8 +11,7 @@ You can type the following lines into your terminal
 
 
 ```
-git clone https://github.com/belatrix/Latam-Keyboard.git && cd Latam-Keyboard && sudo cp BxLatam.* ~/Libray/Keyboard\ /Layouts/
-
+git clone https://github.com/belatrix/Latam-Keyboard.git && cd Latam-Keyboard && cp -v BxLatam.* ~/Library/Keyboard\ Layouts/
 ```
 
 ### Contribute ###
