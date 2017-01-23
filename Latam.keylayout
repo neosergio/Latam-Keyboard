@@ -2,7 +2,7 @@
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!--Created by neosergio version 2.0 on 2017-01-20 at 12:19 (CDT)-->
 <!--Last edited by Ukelele version 3.2.1.161 on 2017-01-23 at 08:36 (GMT-5)-->
-<keyboard group="0" id="5006" name="BX Latin American" maxout="1">
+<keyboard group="0" id="5006" name="Latin American" maxout="1">
 	<layouts>
 		<layout first="0" last="0" mapSet="312" modifiers="48"/>
 	</layouts>
