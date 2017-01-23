@@ -1,7 +1,7 @@
 # Latam-Keyboard
 A Mac Keyboard Layout for latin american keyboards
 
-![Belatrix Latin American layout](http://i.imgur.com/LdNrfqt.png)
+![Latin American layout](http://i.imgur.com/bCTbxxD.png)
 
 If you prefer to use your latin american keyboard distribution with your macOS, then just copy `.keylayout` and `.icns` file into `~/Library/Keyboard\ /Layouts/` folder on your mac.
 
@@ -11,7 +11,7 @@ You can type the following lines into your terminal
 
 
 ```
-git clone https://github.com/belatrix/Latam-Keyboard.git && cd Latam-Keyboard && cp -v BxLatam.* ~/Library/Keyboard\ Layouts/
+git clone https://github.com/neosergio/Latam-Keyboard.git && cd Latam-Keyboard && cp -v Latam.* ~/Library/Keyboard\ Layouts/
 ```
 
 Then you can add as a new input source
@@ -20,7 +20,7 @@ Then you can add as a new input source
 
 ![Latin American - step 02](http://i.imgur.com/iHXGlM1.png)
 
-![Latin American - step 03](http://i.imgur.com/AbThBn0.png)
+![Latin American - step 03](http://i.imgur.com/bbgcCUw.png)
 
 ### Contribute ###
 
