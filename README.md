@@ -1,7 +1,7 @@
 # Latam-Keyboard
 A Mac Keyboard Layout for latin american keyboards
 
-![Latin American layout](http://i.imgur.com/sjeVjPA.png)
+![Latin American layout](http://i.imgur.com/5zm6nHB.png)
 
 If you prefer to use your latin american keyboard distribution with your macOS, then just copy `.keylayout` and `.icns` file into `~/Library/Keyboard\ /Layouts/` folder on your mac.
 
@@ -20,17 +20,17 @@ Then you can add as a new input source
 
 ![Latin American - step 02](http://i.imgur.com/iHXGlM1.png)
 
-![Latin American - step 03](http://i.imgur.com/2hGNspW.png)
+![Latin American - step 03](http://i.imgur.com/zkXihp7.png)
 
-**You will find two versions:**
+**You will find two versions: (_Try both and choose one that works for you_)**
 
-- _**built into**_: For built into keyboards in MacBook, MacBook Air or MacBook Pro
-
-![Built into keyboard](http://i.imgur.com/Cphc5Py.jpg)
-
-- _**external**_: For external keyboards specially useful with Mac mini or iMac
+- _**Type A**_: Frequently used for external keyboards especially useful with Mac mini or iMac
 
 ![Built into keyboard](http://i.imgur.com/65X5vVI.jpg)
+
+- _**Type B**_: Frequently used for built into keyboard in MacBook, MacBook Air or MacBook Pro
+
+![Built into keyboard](http://i.imgur.com/Cphc5Py.jpg)
 
 
 ### Contribute ###
