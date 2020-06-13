@@ -1,8 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
-<!--Created by neosergio version 2.0 on 2017-01-20 at 12:19 (CDT)-->
-<!--Last edited by Ukelele version 3.2.1.161 on 2017-01-23 at 08:36 (GMT-5)-->
-<keyboard group="0" id="5006" name="Latin American - A - White" maxout="1">
+<!--Created by neosergio version 2.1 on 2020-06-13 at 00:00 (CDT)-->
+<keyboard group="0" id="5006" name="Latin American - C" maxout="1">
 	<layouts>
 		<layout first="0" last="0" mapSet="312" modifiers="48"/>
 	</layouts>
@@ -44,7 +43,7 @@
 			<key code="7" output="x"/>
 			<key code="8" output="c"/>
 			<key code="9" output="v"/>
-			<key code="10" output="&#x003C;"/>
+			<key code="10" output="|"/>
 			<key code="11" output="b"/>
 			<key code="12" output="q"/>
 			<key code="13" output="w"/>
@@ -84,7 +83,7 @@
 			<key code="47" output="."/>
 			<key code="48" output="&#x0009;"/>
 			<key code="49" action="a20"/>
-			<key code="50" output="|"/>
+			<key code="50" output="&#x003C;"/>
 			<key code="51" output="&#x0008;"/>
 			<key code="52" output="&#x0003;"/>
 			<key code="53" output="&#x001B;"/>
@@ -282,7 +281,7 @@
 			<key code="7" output="X"/>
 			<key code="8" output="C"/>
 			<key code="9" output="V"/>
-			<key code="10" output="&#x003C;"/>
+			<key code="10" output="|"/>
 			<key code="11" output="B"/>
 			<key code="12" output="Q"/>
 			<key code="13" output="W"/>
@@ -322,7 +321,7 @@
 			<key code="47" output="."/>
 			<key code="48" output="&#x0009;"/>
 			<key code="49" action="a20"/>
-			<key code="50" output="|"/>
+			<key code="50" output="&#x003C;"/>
 			<key code="51" output="&#x0008;"/>
 			<key code="52" output="&#x0003;"/>
 			<key code="53" output="&#x001B;"/>
@@ -547,7 +546,7 @@
 			<key code="25" output="·"/>
 			<key code="26" output="‡"/>
 			<key code="27" output="—"/>
-			<key code="28" output="°"/>
+			<key code="28" output="&#x003E;"/>
 			<key code="29" output="‚"/>
 			<key code="30" output="’"/>
 			<key code="31" output="Ø"/>
