@@ -41,6 +41,7 @@ A malformed `.keylayout` is ignored by macOS with no error message. The layout j
 ## `.keylayout` structure (A/B/C)
 
 - `modifierMap id="48"` defines keyMap indices 0–7: 0 = none, 1 = Shift, 2 = Caps, 3 = Option, 4 = Shift+Option, 5 = Caps+Option, 6 = Command (any combination), 7 = Control.
+- **Map 6 (Command) must mirror map 0**, with each dead-key action replaced by the plain character it types, so that shortcuts such as Cmd+`+` and Cmd+`-` use the characters printed on the keys. It used to follow a US keyboard, which broke these shortcuts (issues #10 and #11). When you change a key in map 0, update map 6 to match.
 - `keyMapSet id="312"` holds one `<keyMap>` per index. Each one maps a virtual key `code` to either a literal `output` or an `action` (dead keys).
 - `<actions>` and `<terminators>` implement the dead keys (accents such as ´ ¨ ^ `). A key whose `action="aNN"` sends its output through these state machines, so a change to an accented key's behavior usually means editing `<actions>`, not the keyMap.
 - **Every layout needs its own `id`** on `<keyboard>`. They use `group="126"` (Unicode) with negative IDs: A to C_white are -5001 to -5006, and D is -17832. When macOS finds a duplicate ID, it silently reassigns one, and which layout gets which ID depends on load order (this caused issue #9). The `name` attribute is the name shown in Input Sources and must also be unique.
