@@ -47,7 +47,9 @@ rm ~/Library/Keyboard\ Layouts/Latam_*
 
 ## Which layout to choose
 
-**There are several versions. Try them and choose the one that works for you.** Each one also comes in a _White_ version, with a white icon for dark mode.
+**There are several versions. Try them and choose the one that works for you.**
+
+The icon of Types A, B, C and D adapts to the menu bar on its own: white over a dark background, black over a light one. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode. Types A, B and C also come in a _White_ version with a fixed white icon. It's meant for older macOS versions, or if the adaptive icon doesn't show up for you.
 
 - _**Type A**_: Frequently used for external keyboards.
 
