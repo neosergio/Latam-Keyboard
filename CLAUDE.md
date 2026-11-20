@@ -52,8 +52,10 @@ A malformed `.keylayout` is ignored by macOS with no error message. The layout j
 
 - **A**: for external keyboards. **B**: for built-in keyboards. **C**: for some gaming keyboards.
   - The main difference is that the ISO key (code `10`) and the `|°` key (code `50`) are swapped: A has `<` on 10 and `|` on 50, while B and C have the reverse.
+  - With Shift, A types `>` on 10 and `°` on 50, and B types `°` on 10 and `>` on 50. **C intentionally pairs them differently** (`|` with `>` on 10, `<` with `°` on 50), because some gaming keyboards are labeled that way. Don't "fix" it.
+  - **When you swap keys 10 and 50, swap them in every key map** (plain, Shift, Caps Lock, Option and so on), not only plain and Shift. B's Caps Lock map was left with A's arrangement for years (fixed in 1.1.3). `tests/run.sh` checks keys 10 and 50 without modifiers, with Shift and with Caps Lock.
 - **`_white`**: the same layout as its base, with a white icon for dark mode. Its `.keylayout` should differ from the base only in the `name` and `id` attributes. **When you change a base layout, apply the same change to its `_white` twin.**
-- **D**: a contributed layout for one specific keyboard with unusual Command and `+` behavior. It was generated separately (different `group`/`id`, multiple `<layout>` entries per keyboard type, different `modifierMap` and `keyMapSet` ids, space indentation). Don't assume its structure matches A, B or C.
+- **D**: deprecated, to be removed in 1.2.0. It was contributed (PR #7) as a workaround for the Command bug fixed in 1.0.3 (#6, #10, #11): Apple's Latin American layout with `<` and `|` swapped. It now types the same as A without modifiers, with Shift, Caps Lock and Command, and differs only in the Option maps, which follow Apple's. When removing it, delete its two files, its `KLInfo_` entry and its line in `tests/layouttest.swift`. It was generated separately (different `group`/`id`, multiple `<layout>` entries per keyboard type, different `modifierMap` and `keyMapSet` ids, space indentation). Don't assume its structure matches A, B or C.
 
 ## `.keylayout` structure (A/B/C)
 

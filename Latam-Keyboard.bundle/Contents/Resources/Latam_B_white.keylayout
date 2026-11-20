@@ -281,7 +281,7 @@
             <key code="7" output="X"/>
             <key code="8" output="C"/>
             <key code="9" output="V"/>
-            <key code="10" output="&#x3C;"/>
+            <key code="10" output="|"/>
             <key code="11" output="B"/>
             <key code="12" output="Q"/>
             <key code="13" output="W"/>
@@ -321,7 +321,7 @@
             <key code="47" output="."/>
             <key code="48" output="&#x9;"/>
             <key code="49" action="a20"/>
-            <key code="50" output="|"/>
+            <key code="50" output="&#x003c;"/>
             <key code="51" output="&#x8;"/>
             <key code="52" output="&#x3;"/>
             <key code="53" output="&#x1B;"/>

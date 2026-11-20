@@ -12,15 +12,16 @@ import Foundation
 
 let bundleID = "com.github.neosergio.keyboardlayout.latam"
 
-// name in the .keylayout -> expected characters on ISO key 10 and key 50 (nil = not checked)
-let layouts: [(name: String, isoKeys: String?)] = [
-    ("Latin American - A", "<|"),
-    ("Latin American - A - White", "<|"),
-    ("Latin American - B", "|<"),
-    ("Latin American - B - White", "|<"),
-    ("Latin American - C", "|<"),
-    ("Latin American - C - White", "|<"),
-    ("Latin_D", nil),
+// Expected characters on key 10 (ISO key) and key 50, without and with Shift (nil = not checked).
+// Type C's Shift pairing (| with >, < with °) is intentional: some gaming keyboards work that way.
+let layouts: [(name: String, isoKeys: (plain: String, shift: String)?)] = [
+    ("Latin American - A", ("<|", ">°")),
+    ("Latin American - A - White", ("<|", ">°")),
+    ("Latin American - B", ("|<", "°>")),
+    ("Latin American - B - White", ("|<", "°>")),
+    ("Latin American - C", ("|<", ">°")),
+    ("Latin American - C - White", ("|<", ">°")),
+    ("Latin_D", ("<|", ">°")),
 ]
 
 func expectedID(_ name: String) -> String {
@@ -64,7 +65,7 @@ func type(_ data: Data, _ presses: [(UInt16, Int)]) -> String {
 
 let caps = Int(alphaLock), cmd = Int(cmdKey), shift = Int(shiftKey)
 
-func keyChecks(_ data: Data, isoKeys: String?) -> [(String, String, String)] {
+func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?) -> [(String, String, String)] {
     var checks: [(String, String, String)] = [
         ("ñ", type(data, [(41, 0)]), "ñ"),
         ("Shift+ñ", type(data, [(41, shift)]), "Ñ"),
@@ -77,7 +78,12 @@ func keyChecks(_ data: Data, isoKeys: String?) -> [(String, String, String)] {
         ("Cmd + 0", type(data, [(29, cmd)]), "0"),
         ("Cmd + c", type(data, [(8, cmd)]), "c"),
     ]
-    if let iso = isoKeys { checks.append(("keys 10 and 50", type(data, [(10, 0), (50, 0)]), iso)) }
+    if let iso = isoKeys {
+        checks.append(("keys 10 and 50", type(data, [(10, 0), (50, 0)]), iso.plain))
+        checks.append(("Shift: keys 10 and 50", type(data, [(10, shift), (50, shift)]), iso.shift))
+        // Caps Lock must not move these keys (B had A's arrangement under Caps Lock).
+        checks.append(("Caps Lock: keys 10 and 50", type(data, [(10, caps), (50, caps)]), iso.plain))
+    }
     return checks
 }
 

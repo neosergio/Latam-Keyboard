@@ -61,7 +61,7 @@ The icon of Types A, B, C and D adapts to the menu bar on its own: white over a 
 
 - _**Type C**_: Some gaming keyboards work better with this layout, just test it :)
 
-- _**Type D**_: For keyboards where Command and `+` behave unexpectedly with the other layouts.
+- _**Type D**_ (**deprecated, will be removed in version 1.2.0**): it was added because Command shortcuts like Cmd+`+` didn't work in the other layouts. That was fixed in version 1.0.3, and Type D now types the same as Type A except with Option. If you use Type D, switch to Type A.
 
 ### Contribute ###
 
