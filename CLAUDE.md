@@ -35,7 +35,7 @@ A malformed `.keylayout` is ignored by macOS with no error message. The layout j
 
 - **A**: for external keyboards. **B**: for built-in keyboards. **C**: for some gaming keyboards.
   - The main difference is that the ISO key (code `10`) and the `|°` key (code `50`) are swapped: A has `<` on 10 and `|` on 50, while B and C have the reverse.
-- **`_white`**: the same layout as its base, with a white icon for dark mode. Its `.keylayout` should differ from the base only in the `name` attribute. **When you change a base layout, apply the same change to its `_white` twin.**
+- **`_white`**: the same layout as its base, with a white icon for dark mode. Its `.keylayout` should differ from the base only in the `name` and `id` attributes. **When you change a base layout, apply the same change to its `_white` twin.**
 - **D**: a contributed layout for one specific keyboard with unusual Command and `+` behavior. It was generated separately (different `group`/`id`, multiple `<layout>` entries per keyboard type, different `modifierMap` and `keyMapSet` ids, space indentation). Don't assume its structure matches A, B or C.
 
 ## `.keylayout` structure (A/B/C)
@@ -43,4 +43,4 @@ A malformed `.keylayout` is ignored by macOS with no error message. The layout j
 - `modifierMap id="48"` defines keyMap indices 0–7: 0 = none, 1 = Shift, 2 = Caps, 3 = Option, 4 = Shift+Option, 5 = Caps+Option, 6 = Command (any combination), 7 = Control.
 - `keyMapSet id="312"` holds one `<keyMap>` per index. Each one maps a virtual key `code` to either a literal `output` or an `action` (dead keys).
 - `<actions>` and `<terminators>` implement the dead keys (accents such as ´ ¨ ^ `). A key whose `action="aNN"` sends its output through these state machines, so a change to an accented key's behavior usually means editing `<actions>`, not the keyMap.
-- All A/B/C files share `id="5006"`. The `name` attribute on `<keyboard>` is the name shown in Input Sources.
+- **Every layout needs its own `id`** on `<keyboard>`. They use `group="126"` (Unicode) with negative IDs: A to C_white are -5001 to -5006, and D is -17832. When macOS finds a duplicate ID, it silently reassigns one, and which layout gets which ID depends on load order (this caused issue #9). The `name` attribute is the name shown in Input Sources and must also be unique.

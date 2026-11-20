@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!--Created by neosergio version 2.1 on 2020-06-13 at 00:00 (CDT)-->
-<keyboard group="0" id="5006" name="Latin American - C" maxout="1">
+<keyboard group="126" id="-5005" name="Latin American - C" maxout="1">
 	<layouts>
 		<layout first="0" last="0" mapSet="312" modifiers="48"/>
 	</layouts>
