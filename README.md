@@ -49,7 +49,7 @@ rm ~/Library/Keyboard\ Layouts/Latam_*
 
 **There are several versions. Try them and choose the one that works for you.**
 
-The icon of Types A, B, C and D adapts to the menu bar on its own: white over a dark background, black over a light one. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode. Types A, B and C also come in a _White_ version with a fixed white icon. It's meant for older macOS versions, or if the adaptive icon doesn't show up for you.
+The icon of Types A, B, C and D is a black continent with a thin white outline, so it stays visible over any menu bar color. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode. It also shows up in the small badge next to the text cursor when you switch layouts. Types A, B and C also come in a _White_ version with a fixed white icon, from before this icon existed. You don't need them anymore.
 
 - _**Type A**_: Frequently used for external keyboards.
 

@@ -11,15 +11,13 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.3</string>
+	<string>1.1.4</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.3</string>
+	<string>1.1.4</string>
 	<key>KLInfo_Latin American - A</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
-		<key>TISIconIsTemplate</key>
-		<true/>
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-A</string>
 		<key>TISIntendedLanguage</key>
@@ -38,8 +36,6 @@
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
-		<key>TISIconIsTemplate</key>
-		<true/>
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-B</string>
 		<key>TISIntendedLanguage</key>
@@ -58,8 +54,6 @@
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
-		<key>TISIconIsTemplate</key>
-		<true/>
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-C</string>
 		<key>TISIntendedLanguage</key>
@@ -78,8 +72,6 @@
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
-		<key>TISIconIsTemplate</key>
-		<true/>
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinD</string>
 		<key>TISIntendedLanguage</key>
