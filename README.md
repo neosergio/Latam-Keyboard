@@ -3,18 +3,17 @@ A Mac Keyboard Layout for latin american keyboards
 
 ![Latin American layout](http://i.imgur.com/5zm6nHB.png)
 
-If you prefer to use your latin american keyboard distribution with your macOS, then just copy `.keylayout` and `.icns` files into `~/Library/Keyboard\ /Layouts/` folder on your macOS.
+## Install
 
-You'll probably need to log out or restart and then you may choose the Latin American layout under **System Preferences... > Keyboard > Input Sources**
-
-You can type the following lines into your terminal
-
+Install with [Homebrew](https://brew.sh):
 
 ```
-git clone https://github.com/neosergio/Latam-Keyboard.git && cd Latam-Keyboard && cp -v Latam*.* ~/Library/Keyboard\ Layouts/
+brew install --cask neosergio/tap/latam-keyboard
 ```
 
-Then you can add it as a new input source
+Homebrew will ask for your password, because the layouts are installed for all users in `/Library/Keyboard Layouts`.
+
+Log out and back in, then add the layout under **System Settings > Keyboard > Input Sources > Edit > + > Others**:
 
 ![Latin American - step 01](http://i.imgur.com/SUiyeLT.png)
 
@@ -22,7 +21,29 @@ Then you can add it as a new input source
 
 ![Latin American - step 03](http://i.imgur.com/zkXihp7.png)
 
-**You will find two versions: (_Try both and choose one that works for you_)**
+To update to a new version:
+
+```
+brew upgrade --cask latam-keyboard
+```
+
+### Upgrading from a manual install
+
+Earlier versions of this README said to copy the files into `~/Library/Keyboard Layouts` by hand. If you did that, remove those copies before or after installing with Homebrew, so that each layout shows up only once:
+
+```
+rm ~/Library/Keyboard\ Layouts/Latam_*
+```
+
+## Uninstall
+
+1. Remove the layout from **System Settings > Keyboard > Input Sources**.
+2. Run `brew uninstall --cask latam-keyboard`.
+3. Log out and back in.
+
+## Which layout to choose
+
+**There are several versions. Try them and choose the one that works for you.** Each one also comes in a _White_ version, with a white icon for dark mode.
 
 - _**Type A**_: Frequently used for external keyboards.
 
@@ -34,7 +55,8 @@ Then you can add it as a new input source
 
 - _**Type C**_: Some gaming keyboards work better with this layout, just test it :)
 
+- _**Type D**_: For keyboards where Command and `+` behave unexpectedly with the other layouts.
+
 ### Contribute ###
 
 Feel free to contribute, adapt or improve this layout and share it with the community.
-

@@ -6,13 +6,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A set of macOS custom keyboard layouts (Apple `.keylayout` XML, typically edited with Ukelele) that map a Latin American physical keyboard on macOS. There is no build system, no code and no tests. Each layout is one `Latam_X.keylayout` file plus a matching `Latam_X.icns` icon with the **same basename**. macOS pairs them by filename, so keep the names in sync when you add or rename a layout.
 
-## Install / try a layout
+## Distribution: Homebrew only
 
-```
-cp -v Latam*.* ~/Library/Keyboard\ Layouts/
-```
+Homebrew is the only supported way for users to install these layouts: `brew install --cask neosergio/tap/latam-keyboard`. The cask lives in a separate repo, `neosergio/homebrew-tap` (`Casks/latam-keyboard.rb`). It downloads the GitHub tarball for a `vX.Y.Z` tag and installs the files into `/Library/Keyboard Layouts`, which needs sudo. Don't add manual `cp` install instructions to the README.
 
-Then log out and back in (or restart) and add the layout under System Settings > Keyboard > Input Sources. A layout change can't be tested any other way. If you change a file that is already installed, copy it again and log out again.
+The cask names every file explicitly. **When you add, remove or rename a layout, update the variant list in the cask too.**
+
+To release:
+1. Tag `vX.Y.Z` here and push the tag.
+2. In the tap, update `version`, and set `sha256` from `curl -sL https://github.com/neosergio/Latam-Keyboard/archive/refs/tags/vX.Y.Z.tar.gz | shasum -a 256`.
+3. Run `brew audit --cask --strict --online neosergio/tap/latam-keyboard`.
+
+## Testing a layout change
+
+A layout change can only be tested by installing it and logging out and back in. To try an unreleased edit, copy it into your user folder with `cp Latam_X.* ~/Library/Keyboard\ Layouts/`, log out and back in, and type. Delete the copy afterwards, or it will appear next to the copy Homebrew installed.
 
 ## Validate after editing
 
