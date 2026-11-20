@@ -1,7 +1,10 @@
 # Latam-Keyboard
-A Mac Keyboard Layout for latin american keyboards
 
-![Latin American layout](http://i.imgur.com/5zm6nHB.png)
+macOS keyboard layouts for Latin American keyboards.
+
+Apple's own Latin American layout doesn't match many of these keyboards. For example, `<` and `>` often end up on the wrong key on external keyboards. These layouts follow the labels on the keys, keep the layout's own characters for shortcuts like Cmd+`+`, and tell macOS they're for Latin American Spanish.
+
+![Keyboard Viewer showing the Latin American - B layout](docs/images/keyboard-viewer.png)
 
 ## Install
 
@@ -13,13 +16,9 @@ brew install --cask neosergio/tap/latam-keyboard
 
 Homebrew will ask for your password, because the layouts are installed for all users in `/Library/Keyboard Layouts`.
 
-Log out and back in, then add the layout under **System Settings > Keyboard > Input Sources > Edit > +**. Search for "Latin American". The layouts are marked as Latin American Spanish, so apps like Word use Spanish spelling while you type with them. The screenshots below are from an older macOS version:
+Log out and back in, then go to **System Settings > Keyboard > Input Sources > Edit > +**. The layouts are listed under **Spanish**, or you can search for "Latin American". Because they're marked as Latin American Spanish, apps like Word use Spanish spelling while you type with them.
 
-![Latin American - step 01](http://i.imgur.com/SUiyeLT.png)
-
-![Latin American - step 02](http://i.imgur.com/iHXGlM1.png)
-
-![Latin American - step 03](http://i.imgur.com/zkXihp7.png)
+![The Latin American layouts listed under Spanish in the add input source dialog](docs/images/add-input-source.png)
 
 To update to a new version:
 
@@ -47,24 +46,40 @@ rm ~/Library/Keyboard\ Layouts/Latam_*
 
 ## Which layout to choose
 
-**There are several versions. Try them and choose the one that works for you.**
+**There are several versions. Try them and choose the one that works for you.** The main difference between them is which key types `<` and which types `|`. To see what each key types, choose **Show Keyboard Viewer** from the input menu in the menu bar.
 
-The icon of Types A, B, C and D is a black continent with a thin white outline, so it stays visible over any menu bar color. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode. It also shows up in the small badge next to the text cursor when you switch layouts. Types A, B and C also come in a _White_ version with a fixed white icon, from before this icon existed. You don't need them anymore.
+- _**Type A**_: frequently used with external keyboards. `<` is next to the left Shift key, and `|` is below Esc.
 
-- _**Type A**_: Frequently used for external keyboards.
+  ![An external USB keyboard with Latin American labels](docs/images/keyboard-type-a.jpg)
 
-![Built into keyboard](http://i.imgur.com/65X5vVI.jpg)
+- _**Type B**_: frequently used with built-in Mac keyboards. `|` is next to the left Shift key, and `<` is below Esc.
 
-- _**Type B**_: Frequently used for built-in keyboards.
+  ![A MacBook built-in keyboard with Spanish labels](docs/images/keyboard-type-b.jpg)
 
-![Built into keyboard](http://i.imgur.com/Cphc5Py.jpg)
-
-- _**Type C**_: Some gaming keyboards work better with this layout, just test it :)
+- _**Type C**_: for some gaming keyboards. It types the same as Type B, except that with Shift those two keys give `>` and `°` the other way around, to match how those keyboards are labeled.
 
 - _**Type D**_ (**deprecated, will be removed in version 1.2.0**): it was added because Command shortcuts like Cmd+`+` didn't work in the other layouts. That was fixed in version 1.0.3, and Type D now types the same as Type A except with Option. If you use Type D, switch to Type A.
 
-### Contribute ###
+Caps Lock only changes letters, including `Ñ`. The other keys keep their characters:
 
-Feel free to contribute, adapt or improve this layout and share it with the community.
+![Keyboard Viewer with Caps Lock on, showing capital letters and Ñ](docs/images/keyboard-viewer-caps-lock.png)
+
+### The icon
+
+The icon of Types A, B, C and D is a black continent with a thin white outline, so it stays visible over any menu bar color. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode.
+
+| Light wallpaper | Dark wallpaper |
+|---|---|
+| ![The layout icon in a light menu bar](docs/images/menu-bar-light.png) | ![The layout icon in a dark menu bar](docs/images/menu-bar-dark.png) |
+
+It also shows up in the badge next to the text cursor when you switch layouts:
+
+![The input source badge next to the text cursor, with the Latin American layout selected](docs/images/input-badge.png)
+
+Types A, B and C also come in a _White_ version with a fixed white icon, from before this icon existed. You don't need them anymore, and they'll be removed in version 1.2.0.
+
+## Contribute
+
+Feel free to contribute, adapt or improve these layouts and share them with the community.
 
 Before sending a pull request, run `tests/run.sh`. It checks every layout through macOS itself, including what the keys type, without needing a Latin American keyboard or a logout. You need Xcode or the Command Line Tools.
