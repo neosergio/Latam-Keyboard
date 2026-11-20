@@ -312,7 +312,7 @@
 			<key code="38" output="J"/>
 			<key code="39" output="{"/>
 			<key code="40" output="K"/>
-			<key code="41" output="ñ"/>
+			<key code="41" output="Ñ"/>
 			<key code="42" output="}"/>
 			<key code="43" output=","/>
 			<key code="44" output="-"/>
