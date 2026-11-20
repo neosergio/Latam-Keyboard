@@ -4,13 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A set of macOS custom keyboard layouts (Apple `.keylayout` XML, typically edited with Ukelele) that map a Latin American physical keyboard on macOS. There is no build system, no code and no tests. Each layout is one `Latam_X.keylayout` file plus a matching `Latam_X.icns` icon with the **same basename**. macOS pairs them by filename, so keep the names in sync when you add or rename a layout.
+A set of macOS custom keyboard layouts (Apple `.keylayout` XML, typically edited with Ukelele) that map a Latin American physical keyboard on macOS. There is no build system, no code and no tests.
+
+Everything ships as one keyboard layout bundle, `Latam-Keyboard.bundle`:
+- `Contents/Resources/` holds each layout as a `Latam_X.keylayout` file plus a matching `Latam_X.icns` icon with the **same basename**. macOS pairs them by filename, so keep the names in sync when you add or rename a layout.
+- `Contents/Info.plist` has one `KLInfo_<name>` entry per layout, where `<name>` must match the `name` attribute in the `.keylayout` exactly. Each entry sets `TISIntendedLanguage` to `es-419` and a stable `TISInputSourceID`. A loose `.keylayout` can't declare a language, so macOS reported none and Word fell back to English spelling (issue #1). **When you add, remove or rename a layout, update its `KLInfo_` entry**, and run `plutil -lint` on the plist afterwards.
+- Bump `CFBundleVersion` and `CFBundleShortVersionString` in `Info.plist` to match each release tag.
 
 ## Distribution: Homebrew only
 
 Homebrew is the only supported way for users to install these layouts: `brew install --cask neosergio/tap/latam-keyboard`. The cask lives in a separate repo, `neosergio/homebrew-tap` (`Casks/latam-keyboard.rb`). It downloads the GitHub tarball for a `vX.Y.Z` tag and installs the files into `/Library/Keyboard Layouts`, which needs sudo. Don't add manual `cp` install instructions to the README.
-
-The cask names every file explicitly. **When you add, remove or rename a layout, update the variant list in the cask too.**
 
 To release:
 1. Tag `vX.Y.Z` here and push the tag.
@@ -19,14 +22,16 @@ To release:
 
 ## Testing a layout change
 
-A layout change can only be tested by installing it and logging out and back in. To try an unreleased edit, copy it into your user folder with `cp Latam_X.* ~/Library/Keyboard\ Layouts/`, log out and back in, and type. Delete the copy afterwards, or it will appear next to the copy Homebrew installed.
+The only full test is installing the bundle, logging out and back in, and typing. To try an unreleased edit, copy it into your user folder with `cp -R Latam-Keyboard.bundle ~/Library/Keyboard\ Layouts/`, log out and back in, and type. Delete the copy afterwards, or the layouts will appear twice next to the Homebrew install.
+
+To check that macOS loads the layouts without logging out, delete the per-user cache (`find "$(getconf DARWIN_USER_CACHE_DIR)" -maxdepth 1 -name 'com.apple.IntlDataCache.le*' -delete`) and list the input sources with the Carbon TIS API (`TISCreateInputSourceList`). That shows each layout's ID and languages, and any `duplicate keyboard layout identifier` warnings. macOS only exposes the key data of a bundled layout after the layout has been added in Input Sources.
 
 ## Validate after editing
 
 The files are XML 1.1 and use control-character references (`&#x0008;` for Backspace, `&#x001B;` for Escape, and so on). Plain `xmllint --noout` reports these as errors on every file, including files that work. To check for real syntax problems, filter that noise out:
 
 ```
-xmllint --noout Latam_A.keylayout 2>&1 | grep error | grep -v 'invalid xmlChar value'   # no output = OK
+xmllint --noout Latam-Keyboard.bundle/Contents/Resources/Latam_A.keylayout 2>&1 | grep error | grep -v 'invalid xmlChar value'   # no output = OK
 ```
 
 A malformed `.keylayout` is ignored by macOS with no error message. The layout just disappears from Input Sources. Literal `<`, `>` and `&` in `output` attributes must be escaped (for example, `&#x003C;` for `<`). Don't "fix" the control-character references: macOS needs them.

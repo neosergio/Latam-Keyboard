@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>com.github.neosergio.keyboardlayout.latam</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Latam Keyboard</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.1.0</string>
+	<key>KLInfo_Latin American - A</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>com.github.neosergio.keyboardlayout.latam.Latam-A</string>
+		<key>TISIntendedLanguage</key>
+		<string>es-419</string>
+	</dict>
+	<key>KLInfo_Latin American - A - White</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>com.github.neosergio.keyboardlayout.latam.Latam-A-white</string>
+		<key>TISIntendedLanguage</key>
+		<string>es-419</string>
+	</dict>
+	<key>KLInfo_Latin American - B</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>com.github.neosergio.keyboardlayout.latam.Latam-B</string>
+		<key>TISIntendedLanguage</key>
+		<string>es-419</string>
+	</dict>
+	<key>KLInfo_Latin American - B - White</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>com.github.neosergio.keyboardlayout.latam.Latam-B-white</string>
+		<key>TISIntendedLanguage</key>
+		<string>es-419</string>
+	</dict>
+	<key>KLInfo_Latin American - C</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>com.github.neosergio.keyboardlayout.latam.Latam-C</string>
+		<key>TISIntendedLanguage</key>
+		<string>es-419</string>
+	</dict>
+	<key>KLInfo_Latin American - C - White</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>com.github.neosergio.keyboardlayout.latam.Latam-C-white</string>
+		<key>TISIntendedLanguage</key>
+		<string>es-419</string>
+	</dict>
+	<key>KLInfo_Latin_D</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>com.github.neosergio.keyboardlayout.latam.Latam-D</string>
+		<key>TISIntendedLanguage</key>
+		<string>es-419</string>
+	</dict>
+</dict>
+</plist>

@@ -13,7 +13,7 @@ brew install --cask neosergio/tap/latam-keyboard
 
 Homebrew will ask for your password, because the layouts are installed for all users in `/Library/Keyboard Layouts`.
 
-Log out and back in, then add the layout under **System Settings > Keyboard > Input Sources > Edit > + > Others**:
+Log out and back in, then add the layout under **System Settings > Keyboard > Input Sources > Edit > +**. Search for "Latin American". The layouts are marked as Latin American Spanish, so apps like Word use Spanish spelling while you type with them. The screenshots below are from an older macOS version:
 
 ![Latin American - step 01](http://i.imgur.com/SUiyeLT.png)
 
@@ -26,6 +26,10 @@ To update to a new version:
 ```
 brew upgrade --cask latam-keyboard
 ```
+
+### Upgrading from version 1.0.x
+
+Version 1.1.0 changed how the layouts are packaged, and macOS sees them as new layouts. After `brew upgrade`, remove the old Latin American layouts from **System Settings > Keyboard > Input Sources**, log out and back in, and add them again.
 
 ### Upgrading from a manual install
 
