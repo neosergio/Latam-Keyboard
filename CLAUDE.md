@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A set of macOS custom keyboard layouts (Apple `.keylayout` XML, typically edited with Ukelele) that map a Latin American physical keyboard on macOS. There is no build system, no code and no tests.
+A set of macOS custom keyboard layouts (Apple `.keylayout` XML, typically edited with Ukelele) that map a Latin American physical keyboard on macOS. There is no build system; the only code is the test in `tests/`.
 
 Everything ships as one keyboard layout bundle, `Latam-Keyboard.bundle`:
 - `Contents/Resources/` holds each layout as a `Latam_X.keylayout` file plus a matching `Latam_X.icns` icon with the **same basename**. macOS pairs them by filename, so keep the names in sync when you add or rename a layout.
-- `Contents/Info.plist` has one `KLInfo_<name>` entry per layout, where `<name>` must match the `name` attribute in the `.keylayout` exactly. Each entry sets `TISIntendedLanguage` to `es-419` and a stable `TISInputSourceID`. A loose `.keylayout` can't declare a language, so macOS reported none and Word fell back to English spelling (issue #1). **When you add, remove or rename a layout, update its `KLInfo_` entry**, and run `plutil -lint` on the plist afterwards.
+- `Contents/Info.plist` has one `KLInfo_<name>` entry per layout, where `<name>` must match the `name` attribute in the `.keylayout` exactly. Each entry sets `TISIntendedLanguage` to `es-419` and a `TISInputSourceID`. **The ID must be `<CFBundleIdentifier>.keylayout.<name with everything except letters, digits and `-` removed>`**, for example `...latam.keylayout.LatinAmerican-B-White` or `...latam.keylayout.LatinD`. macOS reports that automatic ID until something reads the layout's name, and only then switches to the plist's ID. If the two differ, the same layout has two IDs, and an added layout can go missing (fixed in 1.1.1). A loose `.keylayout` can't declare a language, so macOS reported none and Word fell back to English spelling (issue #1). **When you add, remove or rename a layout, update its `KLInfo_` entry**, and run `plutil -lint` on the plist afterwards.
 - Bump `CFBundleVersion` and `CFBundleShortVersionString` in `Info.plist` to match each release tag.
 
 ## Distribution: Homebrew only
@@ -22,9 +22,21 @@ To release:
 
 ## Testing a layout change
 
-The only full test is installing the bundle, logging out and back in, and typing. To try an unreleased edit, copy it into your user folder with `cp -R Latam-Keyboard.bundle ~/Library/Keyboard\ Layouts/`, log out and back in, and type. Delete the copy afterwards, or the layouts will appear twice next to the Homebrew install.
+Run the automated test after any change to a `.keylayout` or `Info.plist`:
 
-To check that macOS loads the layouts without logging out, delete the per-user cache (`find "$(getconf DARWIN_USER_CACHE_DIR)" -maxdepth 1 -name 'com.apple.IntlDataCache.le*' -delete`) and list the input sources with the Carbon TIS API (`TISCreateInputSourceList`). That shows each layout's ID and languages, and any `duplicate keyboard layout identifier` warnings. macOS only exposes the key data of a bundled layout after the layout has been added in Input Sources.
+```
+tests/run.sh
+```
+
+No Latin American keyboard and no logout are needed. The script compiles `tests/layouttest.swift`, installs the bundle in `~/Library/Keyboard Layouts`, clears the per-user layout cache, and asks macOS directly about each layout:
+- that it loads;
+- that its input source ID doesn't change after its name is read;
+- that its main language is `es`;
+- what keys type, through `UCKeyTranslate`.
+
+macOS only provides a bundled layout's key data while the layout is enabled, so the test enables each one for a moment and disables it again. It never changes the current input source, and it removes the bundle and clears the cache on exit. It refuses to run if Latam layouts are already installed in either Keyboard Layouts folder. **When you fix a key bug, add a check for it in `keyChecks`.**
+
+A real typing test still needs installing the bundle (`cp -R Latam-Keyboard.bundle ~/Library/Keyboard\ Layouts/`), logging out and back in, and typing. Delete the copy afterwards.
 
 ## Validate after editing
 

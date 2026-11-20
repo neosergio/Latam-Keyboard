@@ -11,15 +11,15 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>KLInfo_Latin American - A</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.Latam-A</string>
+		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-A</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
@@ -28,7 +28,7 @@
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.Latam-A-white</string>
+		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-A-White</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
@@ -37,7 +37,7 @@
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.Latam-B</string>
+		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-B</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
@@ -46,7 +46,7 @@
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.Latam-B-white</string>
+		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-B-White</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
@@ -55,7 +55,7 @@
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.Latam-C</string>
+		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-C</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
@@ -64,7 +64,7 @@
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.Latam-C-white</string>
+		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-C-White</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
@@ -73,7 +73,7 @@
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.Latam-D</string>
+		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinD</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>

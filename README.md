@@ -64,3 +64,5 @@ rm ~/Library/Keyboard\ Layouts/Latam_*
 ### Contribute ###
 
 Feel free to contribute, adapt or improve this layout and share it with the community.
+
+Before sending a pull request, run `tests/run.sh`. It checks every layout through macOS itself, including what the keys type, without needing a Latin American keyboard or a logout. You need Xcode or the Command Line Tools.
