@@ -16,12 +16,8 @@ let bundleID = "com.github.neosergio.keyboardlayout.latam"
 // Type C's Shift pairing (| with >, < with °) is intentional: some gaming keyboards work that way.
 let layouts: [(name: String, isoKeys: (plain: String, shift: String)?)] = [
     ("Latin American - A", ("<|", ">°")),
-    ("Latin American - A - White", ("<|", ">°")),
     ("Latin American - B", ("|<", "°>")),
-    ("Latin American - B - White", ("|<", "°>")),
     ("Latin American - C", ("|<", ">°")),
-    ("Latin American - C - White", ("|<", ">°")),
-    ("Latin_D", ("<|", ">°")),
 ]
 
 func expectedID(_ name: String) -> String {

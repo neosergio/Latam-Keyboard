@@ -26,6 +26,10 @@ To update to a new version:
 brew upgrade --cask latam-keyboard
 ```
 
+### Upgrading to version 1.2.0 from Type D or a White version
+
+Version 1.2.0 removed Type D and the _White_ versions of Types A, B and C. Type D had become the same as Type A, and the White versions' fixed white icon was replaced by an icon that works on any menu bar. After `brew upgrade`, those layouts disappear from Input Sources. Add the regular layout instead: Type A instead of Type D, or the same type without "White".
+
 ### Upgrading from version 1.0.x
 
 Version 1.1.0 changed how the layouts are packaged, and macOS sees them as new layouts. After `brew upgrade`, remove the old Latin American layouts from **System Settings > Keyboard > Input Sources**, log out and back in, and add them again.
@@ -58,8 +62,6 @@ rm ~/Library/Keyboard\ Layouts/Latam_*
 
 - _**Type C**_: for some gaming keyboards. It types the same as Type B, except that with Shift those two keys give `>` and `°` the other way around, to match how those keyboards are labeled.
 
-- _**Type D**_ (**deprecated, will be removed in version 1.2.0**): it was added because Command shortcuts like Cmd+`+` didn't work in the other layouts. That was fixed in version 1.0.3, and Type D now types the same as Type A except with Option. If you use Type D, switch to Type A.
-
 Caps Lock only changes letters, including `Ñ`. The other keys keep their characters:
 
 ![Keyboard Viewer with Caps Lock on, showing capital letters and Ñ](docs/images/keyboard-viewer-caps-lock.png)
@@ -72,7 +74,7 @@ The orange outline on the `´` key in Keyboard Viewer isn't a stuck key. It mark
 
 ### The icon
 
-The icon of Types A, B, C and D is a black continent with a thin white outline, so it stays visible over any menu bar color. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode.
+The icon is a black continent with a thin white outline, so it stays visible over any menu bar color. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode.
 
 | Light wallpaper | Dark wallpaper |
 |---|---|
@@ -81,8 +83,6 @@ The icon of Types A, B, C and D is a black continent with a thin white outline, 
 It also shows up in the badge next to the text cursor when you switch layouts:
 
 ![The input source badge next to the text cursor, with the Latin American layout selected](docs/images/input-badge.png)
-
-Types A, B and C also come in a _White_ version with a fixed white icon, from before this icon existed. You don't need them anymore, and they'll be removed in version 1.2.0.
 
 ## Contribute
 

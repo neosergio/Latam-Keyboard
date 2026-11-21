@@ -11,24 +11,15 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.4</string>
+	<string>1.2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.4</string>
+	<string>1.2.0</string>
 	<key>KLInfo_Latin American - A</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-A</string>
-		<key>TISIntendedLanguage</key>
-		<string>es-419</string>
-	</dict>
-	<key>KLInfo_Latin American - A - White</key>
-	<dict>
-		<key>TICapsLockLanguageSwitchCapable</key>
-		<false/>
-		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-A-White</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
@@ -41,39 +32,12 @@
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
-	<key>KLInfo_Latin American - B - White</key>
-	<dict>
-		<key>TICapsLockLanguageSwitchCapable</key>
-		<false/>
-		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-B-White</string>
-		<key>TISIntendedLanguage</key>
-		<string>es-419</string>
-	</dict>
 	<key>KLInfo_Latin American - C</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
 		<false/>
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-C</string>
-		<key>TISIntendedLanguage</key>
-		<string>es-419</string>
-	</dict>
-	<key>KLInfo_Latin American - C - White</key>
-	<dict>
-		<key>TICapsLockLanguageSwitchCapable</key>
-		<false/>
-		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-C-White</string>
-		<key>TISIntendedLanguage</key>
-		<string>es-419</string>
-	</dict>
-	<key>KLInfo_Latin_D</key>
-	<dict>
-		<key>TICapsLockLanguageSwitchCapable</key>
-		<false/>
-		<key>TISInputSourceID</key>
-		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinD</string>
 		<key>TISIntendedLanguage</key>
 		<string>es-419</string>
 	</dict>
