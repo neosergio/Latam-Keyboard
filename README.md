@@ -64,6 +64,12 @@ Caps Lock only changes letters, including `Ñ`. The other keys keep their charac
 
 ![Keyboard Viewer with Caps Lock on, showing capital letters and Ñ](docs/images/keyboard-viewer-caps-lock.png)
 
+With Command held, every key keeps its character, so shortcuts like Cmd+`+` and Cmd+`-` use the keys as labeled:
+
+![Keyboard Viewer with Command held, showing the same characters as without modifiers](docs/images/keyboard-viewer-command.png)
+
+The orange outline on the `´` key in Keyboard Viewer isn't a stuck key. It marks an accent (dead) key: it types nothing on its own and adds the accent to the next letter, so `´` then `a` gives `á`. With Command held it types `´` directly, so it isn't outlined.
+
 ### The icon
 
 The icon of Types A, B, C and D is a black continent with a thin white outline, so it stays visible over any menu bar color. That matters since macOS 26, where the menu bar is transparent and its color depends on your wallpaper, not on light or dark mode.
