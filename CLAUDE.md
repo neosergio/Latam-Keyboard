@@ -89,6 +89,11 @@ The README's "Thanks" section credits the people who sent pull requests, whose f
 
 To find forks with changes worth looking at, list them (`gh api --paginate repos/neosergio/Latam-Keyboard/forks`) and compare each branch with `gh api repos/neosergio/Latam-Keyboard/compare/master...<owner>:<repo>:<branch>`; only branches with `ahead_by` > 0 have their own commits. As of November 2026, all 62 forks were reviewed: only PaoloLuciano (`|` for keyboards without key 10, adopted in 1.3.0), devacran (a security audit and a way to choose between A and B, adopted in the README and the ASCII test) and EzraLopez (Type A renamed for El Salvador, no key changes) had their own commits.
 
+## Pages outside this repo
+
+- **[infante.io/latam-keyboard](https://infante.io/latam-keyboard/)** is the project page, and the only user documentation in Spanish. It lives in the `neosergio/infante-io` repo (`latam-keyboard/index.html`, with every string in Spanish and English in `window.i18n`, and images in `assets/img/latam-keyboard/` copied from `docs/images/`). The repo's GitHub homepage points there, and the README links to it near the top. Its version number comes from the latest GitHub release on its own, so a release doesn't need a change there. **When something user-facing changes** (the install command, which type to choose, what a key types, the icon), update the README and that page together. Follow the infante-io repo's own CLAUDE.md, and pull before committing there: it often has newer commits from other work.
+- **A blog post on neosergio.net** ("Lo que macOS no documenta sobre las distribuciones de teclado" / "What macOS doesn't document about keyboard layouts", in the `neosergio/neosergio_site` repo) tells the story of the 2026 fixes. It's a dated post; don't update it when the project changes.
+
 ## Validate after editing
 
 The files are XML 1.1 and use control-character references (`&#x0008;` for Backspace, `&#x001B;` for Escape, and so on). Plain `xmllint --noout` reports these as errors on every file, including files that work. To check for real syntax problems, filter that noise out:
