@@ -46,6 +46,7 @@ No Latin American keyboard and no logout are needed. The script compiles `tests/
 - that its input source ID doesn't change after its name is read;
 - that its main language is `es`;
 - what keys type, through `UCKeyTranslate`, including keys 10 and 50 with and without Shift and Caps Lock, Caps Lock + `ñ`, accents, and Command shortcuts.
+- that every printable ASCII character can be typed (the characters that matter for programming), and in B and C also without key 10.
 
 macOS only provides a bundled layout's key data while the layout is enabled, so the test enables each one for a moment and disables it again. It never changes the current input source, and it removes the bundle and clears the cache on exit. **When you fix a key bug, add a check for it in `keyChecks`.**
 

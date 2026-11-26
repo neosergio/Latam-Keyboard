@@ -14,9 +14,10 @@ let bundleID = "com.github.neosergio.keyboardlayout.latam"
 
 // Expected characters on key 10 (ISO key) and key 50, without and with Shift (nil = not checked).
 // Type C's Shift pairing (| with >, < with °) is intentional: some gaming keyboards work that way.
-// barOnOption: Option + key 50 types |, for keyboards without key 10 (like Apple's US keyboards),
-// where B and C would otherwise have no way to type it. Idea from the PaoloLuciano fork.
-let layouts: [(name: String, isoKeys: (plain: String, shift: String)?, barOnOption: Bool)] = [
+// withoutKey10: the layout must also work on keyboards without key 10 (like Apple's US keyboards):
+// Option + key 50 types | there, and every printable ASCII character must be typeable without
+// key 10. Idea from the PaoloLuciano fork. Type A is meant for keyboards that have key 10.
+let layouts: [(name: String, isoKeys: (plain: String, shift: String)?, withoutKey10: Bool)] = [
     ("Latin American - A", ("<|", ">°"), false),
     ("Latin American - B", ("|<", "°>"), true),
     ("Latin American - C", ("|<", ">°"), true),
@@ -63,7 +64,33 @@ func type(_ data: Data, _ presses: [(UInt16, Int)]) -> String {
 
 let caps = Int(alphaLock), cmd = Int(cmdKey), shift = Int(shiftKey), option = Int(optionKey)
 
-func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?, barOnOption: Bool) -> [(String, String, String)] {
+// Every printable ASCII character the layout can type with keys 0-50, with or without Shift and
+// Option. A dead key counts through what it types when followed by Space.
+func typeableASCII(_ data: Data, skipping skipped: Set<UInt16> = []) -> Set<Character> {
+    var found = Set<Character>()
+    data.withUnsafeBytes { buf in
+        let layout = buf.bindMemory(to: UCKeyboardLayout.self).baseAddress!
+        func press(_ code: UInt16, _ mods: Int, _ dead: inout UInt32) -> String {
+            var len = 0
+            var chars = [UniChar](repeating: 0, count: 4)
+            UCKeyTranslate(layout, code, UInt16(kUCKeyActionDown), UInt32((mods >> 8) & 0xFF),
+                           UInt32(LMGetKbdType()), 0, &dead, chars.count, &len, &chars)
+            return String(utf16CodeUnits: chars, count: len)
+        }
+        for code in UInt16(0)...50 where !skipped.contains(code) {
+            for mods in [0, shift, option, shift | option] {
+                var dead: UInt32 = 0
+                var out = press(code, mods, &dead)
+                if out.isEmpty && dead != 0 { out = press(49, 0, &dead) }
+                found.formUnion(out)
+            }
+        }
+    }
+    return found.filter { $0.isASCII && !$0.isWhitespace || $0 == " " }
+}
+let printableASCII = Set((32...126).map { Character(UnicodeScalar(UInt8($0))) })
+
+func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?, withoutKey10: Bool) -> [(String, String, String)] {
     var checks: [(String, String, String)] = [
         ("ñ", type(data, [(41, 0)]), "ñ"),
         ("Shift+ñ", type(data, [(41, shift)]), "Ñ"),
@@ -82,10 +109,16 @@ func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?, barOnOpti
         // Caps Lock must not move these keys (B had A's arrangement under Caps Lock).
         checks.append(("Caps Lock: keys 10 and 50", type(data, [(10, caps), (50, caps)]), iso.plain))
     }
-    if barOnOption {
+    if withoutKey10 {
         checks.append(("Option + key 50", type(data, [(50, option)]), "|"))
         checks.append(("Caps Lock + Option + key 50", type(data, [(50, caps | option)]), "|"))
     }
+    // Every printable ASCII character must be typeable (the characters that matter for programming).
+    func missing(_ skipped: Set<UInt16>) -> String {
+        String(printableASCII.subtracting(typeableASCII(data, skipping: skipped)).sorted())
+    }
+    checks.append(("ASCII characters missing", missing([]), ""))
+    if withoutKey10 { checks.append(("ASCII characters missing without key 10", missing([10]), "")) }
     // Shift + Option + key 50 is the only direct way to type a backtick; keep it.
     checks.append(("Shift + Option + key 50", type(data, [(50, shift | option)]), "`"))
     return checks
@@ -104,7 +137,7 @@ func fail(_ message: String) { print("     FAIL \(message)"); failures += 1 }
 
 if !loaded { print("Not every layout loaded within 10 seconds; failures below show which.") }
 
-for (name, isoKeys, barOnOption) in layouts {
+for (name, isoKeys, withoutKey10) in layouts {
     let id = expectedID(name)
     print(name)
     guard let src = find(id) else { fail("not loaded (expected ID \(id))"); continue }
@@ -125,7 +158,7 @@ for (name, isoKeys, barOnOption) in layouts {
     guard let enabled = find(id), let raw = property(enabled, kTISPropertyUnicodeKeyLayoutData) else {
         fail("no key data"); continue
     }
-    let checks = keyChecks(raw as! Data, isoKeys: isoKeys, barOnOption: barOnOption)
+    let checks = keyChecks(raw as! Data, isoKeys: isoKeys, withoutKey10: withoutKey10)
     for (what, got, want) in checks where got != want { fail("\(what): typed \"\(got)\", expected \"\(want)\"") }
     print("     \(checks.filter { $0.1 == $0.2 }.count)/\(checks.count) key checks passed")
 }

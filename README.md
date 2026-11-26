@@ -50,7 +50,7 @@ rm ~/Library/Keyboard\ Layouts/Latam_*
 
 ## Which layout to choose
 
-**There are several versions. Try them and choose the one that works for you.** The main difference between them is which key types `<` and which types `|`. To see what each key types, choose **Show Keyboard Viewer** from the input menu in the menu bar.
+The main difference between the types is which key types `<` and which types `|`. To check which one you need, pick Type A or Type B and **press the key between the left Shift key and Z** (on Latin American keyboards it's labeled `<` `>`). It should type `<`. If it types `|`, switch to the other type. macOS doesn't always see external keyboards the same way, so the hints below about external and built-in keyboards aren't always right; this test is. To see what every key types, choose **Show Keyboard Viewer** from the input menu in the menu bar.
 
 - _**Type A**_: frequently used with external keyboards. `<` is next to the left Shift key, and `|` is below Esc.
 
@@ -85,6 +85,15 @@ The icon is a black continent with a thin white outline, so it stays visible ove
 It also shows up in the badge next to the text cursor when you switch layouts:
 
 ![The input source badge next to the text cursor, with the Latin American layout selected](docs/images/input-badge.png)
+
+## Is it safe?
+
+A keyboard layout sits between your keyboard and everything you type, so it's fair to ask. What gets installed is only data:
+
+- `Latam-Keyboard.bundle` holds the three `.keylayout` files (XML tables that say which character each key types), their icons, and an `Info.plist` with each layout's name, ID and language. There are no programs, scripts or install hooks. Unlike input methods, keyboard layouts can't run code: macOS only reads these tables.
+- Each layout sets `maxout="1"`, so every key types at most one character.
+- Homebrew installs a tagged release of this repository and checks its SHA-256 checksum before installing it.
+- `tests/` and `tools/` are only for development and aren't installed.
 
 ## Contribute
 
