@@ -32,6 +32,11 @@ To release:
 3. In the tap, pull first (it often has newer commits for other formulae), update `version`, and set `sha256` from `curl -sL https://github.com/neosergio/Latam-Keyboard/archive/refs/tags/vX.Y.Z.tar.gz | shasum -a 256`.
 4. Run `brew style` and `brew audit --cask --strict --online neosergio/tap/latam-keyboard`. Homebrew's local copy of the tap is a separate clone, so update it before auditing.
 5. If layouts were removed or IDs changed, update the cask's `caveats` and the README's upgrade section.
+6. Publish a GitHub release for the tag with release notes (`gh release create vX.Y.Z --verify-tag --draft --notes-file …`), crediting by `@username` the people whose reports, fixes or ideas went into it. Create it as a **draft**: `@` mentions notify people as soon as the release is published, which can't be undone, so the maintainer reviews it first. GitHub stores the notes with CRLF line endings, so compare ignoring them.
+
+Only changes to `Latam-Keyboard.bundle` need a new version. Changes to the README, CLAUDE.md, `tests/` or `tools/` are just commits: Homebrew installs only the bundle.
+
+The README's "Is it safe?" section promises that what gets installed is only data: the `.keylayout` tables, their icons and the `Info.plist`, with `maxout="1"` in every layout. Keep it true: don't add scripts, binaries or install hooks (such as a cask `postflight`) to the bundle or the cask.
 
 ## Testing a layout change
 
@@ -77,6 +82,12 @@ Some things only show on screen. Any keyboard works for these, since Keyboard Vi
 - **Word's spelling language:** ask Word through AppleScript, for example `tell application "Microsoft Word" to get language ID of word 2 of active document`. `language none` means Word didn't recognize the layout's language. Compare with a line typed with Apple's own Latin American layout.
 
 The README's screenshots live in `docs/images/`. Don't link images from external hosts.
+
+## Contributors and forks
+
+The README's "Thanks" section credits the people who sent pull requests, whose forks' ideas were incorporated, who found the cause of a bug, and who reported or tested problems. When someone contributes, add them there, saying accurately what they did, and check that the GitHub username exists (`gh api users/<name>`). Usernames in the README don't notify anyone; mentions in issue comments and release notes do.
+
+To find forks with changes worth looking at, list them (`gh api --paginate repos/neosergio/Latam-Keyboard/forks`) and compare each branch with `gh api repos/neosergio/Latam-Keyboard/compare/master...<owner>:<repo>:<branch>`; only branches with `ahead_by` > 0 have their own commits. As of November 2026, all 62 forks were reviewed: only PaoloLuciano (`|` for keyboards without key 10, adopted in 1.3.0), devacran (a security audit and a way to choose between A and B, adopted in the README and the ASCII test) and EzraLopez (Type A renamed for El Salvador, no key changes) had their own commits.
 
 ## Validate after editing
 
