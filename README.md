@@ -2,7 +2,7 @@
 
 macOS keyboard layouts for Latin American keyboards.
 
-Apple's own Latin American layout doesn't match many of these keyboards. For example, `<` and `>` often end up on the wrong key on external keyboards. These layouts follow the labels on the keys, keep the layout's own characters for shortcuts like Cmd+`+`, and tell macOS they're for Latin American Spanish.
+Apple's own Latin American layout doesn't match many of these keyboards. For example, `<` and `>` often end up on the wrong key on external keyboards. These layouts follow the labels on the keys, keep the layout's own characters for shortcuts like Cmd+`+`, and tell macOS they're for Spanish.
 
 ![Keyboard Viewer showing the Latin American - B layout](docs/images/keyboard-viewer.png)
 
@@ -16,7 +16,7 @@ brew install --cask neosergio/tap/latam-keyboard
 
 Homebrew will ask for your password, because the layouts are installed for all users in `/Library/Keyboard Layouts`.
 
-Log out and back in, then go to **System Settings > Keyboard > Input Sources > Edit > +**. The layouts are listed under **Spanish**, or you can search for "Latin American". Because they're marked as Latin American Spanish, apps like Word use Spanish spelling while you type with them.
+Log out and back in, then go to **System Settings > Keyboard > Input Sources > Edit > +**. The layouts are listed under **Spanish**, or you can search for "Latin American". Because they're marked as Spanish, apps like Word check spelling in Spanish while you type with them.
 
 ![The Latin American layouts listed under Spanish in the add input source dialog](docs/images/add-input-source.png)
 

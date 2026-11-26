@@ -11,9 +11,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.0</string>
+	<string>1.2.1</string>
 	<key>CFBundleVersion</key>
-	<string>1.2.0</string>
+	<string>1.2.1</string>
 	<key>KLInfo_Latin American - A</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
@@ -21,7 +21,7 @@
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-A</string>
 		<key>TISIntendedLanguage</key>
-		<string>es-419</string>
+		<string>es</string>
 	</dict>
 	<key>KLInfo_Latin American - B</key>
 	<dict>
@@ -30,7 +30,7 @@
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-B</string>
 		<key>TISIntendedLanguage</key>
-		<string>es-419</string>
+		<string>es</string>
 	</dict>
 	<key>KLInfo_Latin American - C</key>
 	<dict>
@@ -39,7 +39,7 @@
 		<key>TISInputSourceID</key>
 		<string>com.github.neosergio.keyboardlayout.latam.keylayout.LatinAmerican-C</string>
 		<key>TISIntendedLanguage</key>
-		<string>es-419</string>
+		<string>es</string>
 	</dict>
 </dict>
 </plist>
