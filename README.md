@@ -4,6 +4,8 @@ macOS keyboard layouts for Latin American keyboards.
 
 Apple's own Latin American layout doesn't match many of these keyboards. For example, `<` and `>` often end up on the wrong key on external keyboards. These layouts follow the labels on the keys, keep the layout's own characters for shortcuts like Cmd+`+`, and tell macOS they're for Spanish.
 
+**¿Prefieres leerlo en español?** La página del proyecto explica cómo instalarlo y qué tipo elegir: [infante.io/latam-keyboard](https://infante.io/latam-keyboard/).
+
 ![Keyboard Viewer showing the Latin American - B layout](docs/images/keyboard-viewer.png)
 
 ## Install
