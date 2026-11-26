@@ -62,6 +62,8 @@ rm ~/Library/Keyboard\ Layouts/Latam_*
 
 - _**Type C**_: for some gaming keyboards. It types the same as Type B, except that with Shift those two keys give `>` and `°` the other way around, to match how those keyboards are labeled.
 
+**If your keyboard has no key between the left Shift key and Z**, like Apple keyboards with the US layout or the Logitech MX Keys Mini, use Type B. `<` and `>` are on the key below Esc, and `|` is on **Option + the key below Esc** (also in Type C).
+
 Caps Lock only changes letters, including `Ñ`. The other keys keep their characters:
 
 ![Keyboard Viewer with Caps Lock on, showing capital letters and Ñ](docs/images/keyboard-viewer-caps-lock.png)

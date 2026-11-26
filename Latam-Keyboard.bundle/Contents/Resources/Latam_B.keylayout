@@ -449,7 +449,7 @@
             <key code="47" output="&#x2265;"/>
             <key code="48" output="&#x9;"/>
             <key code="49" output="&#xA0;"/>
-            <key code="50" output="☆"/>
+            <key code="50" output="|"/>
             <key code="51" output="&#x8;"/>
             <key code="52" output="&#x3;"/>
             <key code="53" output="&#x1B;"/>
@@ -687,7 +687,7 @@
             <key code="47" output="&#x2265;"/>
             <key code="48" output="&#x9;"/>
             <key code="49" output="&#xA0;"/>
-            <key code="50" output="&#xAC;"/>
+            <key code="50" output="|"/>
             <key code="51" output="&#x8;"/>
             <key code="52" output="&#x3;"/>
             <key code="53" output="&#x1B;"/>

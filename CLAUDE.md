@@ -92,6 +92,7 @@ A malformed `.keylayout` is ignored by macOS with no error message. The layout j
 - **A**: for external keyboards. **B**: for built-in keyboards. **C**: for some gaming keyboards.
   - The main difference is that the ISO key (code `10`, next to the left Shift key) and the key below Esc (code `50`) are swapped: A has `<` on 10 and `|` on 50, while B and C have the reverse.
   - With Shift, A types `>` on 10 and `°` on 50, and B types `°` on 10 and `>` on 50. **C intentionally pairs them differently** (`|` with `>` on 10, `<` with `°` on 50), because some gaming keyboards are labeled that way. Don't "fix" it.
+  - Keyboards without key 10 (Apple's US keyboards, the Logitech MX Keys Mini) can't type whatever only lives there. For them, B and C also put `|` on Option + key 50 and Caps Lock + Option + key 50 (since 1.3.0, idea from the PaoloLuciano fork, which used Control). A isn't meant for those keyboards: it would need both `<` and `>`, and Shift + Option + key 50 must stay `` ` ``, the only direct way to type a backtick. `tests/run.sh` checks both.
   - **When you swap keys 10 and 50, swap them in every key map** (plain, Shift, Caps Lock, Option and so on), not only plain and Shift. B's Caps Lock map was left with A's arrangement for years (fixed in 1.1.3, found in Keyboard Viewer).
 - Version 1.2.0 removed Type D (a workaround for the Command bug fixed in 1.0.3, which had become the same as A except with Option) and the White variants of A, B and C (replaced by the outlined icon).
 

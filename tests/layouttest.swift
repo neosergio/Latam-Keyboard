@@ -14,10 +14,12 @@ let bundleID = "com.github.neosergio.keyboardlayout.latam"
 
 // Expected characters on key 10 (ISO key) and key 50, without and with Shift (nil = not checked).
 // Type C's Shift pairing (| with >, < with °) is intentional: some gaming keyboards work that way.
-let layouts: [(name: String, isoKeys: (plain: String, shift: String)?)] = [
-    ("Latin American - A", ("<|", ">°")),
-    ("Latin American - B", ("|<", "°>")),
-    ("Latin American - C", ("|<", ">°")),
+// barOnOption: Option + key 50 types |, for keyboards without key 10 (like Apple's US keyboards),
+// where B and C would otherwise have no way to type it. Idea from the PaoloLuciano fork.
+let layouts: [(name: String, isoKeys: (plain: String, shift: String)?, barOnOption: Bool)] = [
+    ("Latin American - A", ("<|", ">°"), false),
+    ("Latin American - B", ("|<", "°>"), true),
+    ("Latin American - C", ("|<", ">°"), true),
 ]
 
 func expectedID(_ name: String) -> String {
@@ -59,9 +61,9 @@ func type(_ data: Data, _ presses: [(UInt16, Int)]) -> String {
     }
 }
 
-let caps = Int(alphaLock), cmd = Int(cmdKey), shift = Int(shiftKey)
+let caps = Int(alphaLock), cmd = Int(cmdKey), shift = Int(shiftKey), option = Int(optionKey)
 
-func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?) -> [(String, String, String)] {
+func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?, barOnOption: Bool) -> [(String, String, String)] {
     var checks: [(String, String, String)] = [
         ("ñ", type(data, [(41, 0)]), "ñ"),
         ("Shift+ñ", type(data, [(41, shift)]), "Ñ"),
@@ -80,6 +82,12 @@ func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?) -> [(Stri
         // Caps Lock must not move these keys (B had A's arrangement under Caps Lock).
         checks.append(("Caps Lock: keys 10 and 50", type(data, [(10, caps), (50, caps)]), iso.plain))
     }
+    if barOnOption {
+        checks.append(("Option + key 50", type(data, [(50, option)]), "|"))
+        checks.append(("Caps Lock + Option + key 50", type(data, [(50, caps | option)]), "|"))
+    }
+    // Shift + Option + key 50 is the only direct way to type a backtick; keep it.
+    checks.append(("Shift + Option + key 50", type(data, [(50, shift | option)]), "`"))
     return checks
 }
 
@@ -96,7 +104,7 @@ func fail(_ message: String) { print("     FAIL \(message)"); failures += 1 }
 
 if !loaded { print("Not every layout loaded within 10 seconds; failures below show which.") }
 
-for (name, isoKeys) in layouts {
+for (name, isoKeys, barOnOption) in layouts {
     let id = expectedID(name)
     print(name)
     guard let src = find(id) else { fail("not loaded (expected ID \(id))"); continue }
@@ -117,7 +125,7 @@ for (name, isoKeys) in layouts {
     guard let enabled = find(id), let raw = property(enabled, kTISPropertyUnicodeKeyLayoutData) else {
         fail("no key data"); continue
     }
-    let checks = keyChecks(raw as! Data, isoKeys: isoKeys)
+    let checks = keyChecks(raw as! Data, isoKeys: isoKeys, barOnOption: barOnOption)
     for (what, got, want) in checks where got != want { fail("\(what): typed \"\(got)\", expected \"\(want)\"") }
     print("     \(checks.filter { $0.1 == $0.2 }.count)/\(checks.count) key checks passed")
 }
