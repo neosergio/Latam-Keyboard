@@ -65,7 +65,9 @@ swiftc -O tests/layouttest.swift -o /tmp/layouttest && /tmp/layouttest
 
 Check first which version is installed (`brew list --cask --versions latam-keyboard`) and whether it matches the repo (`diff -rq "/Library/Keyboard Layouts/Latam-Keyboard.bundle" Latam-Keyboard.bundle`).
 
-To try an unreleased change on a Mac that has the Homebrew install, don't copy the bundle into `~/Library`. Copy the changed files over the installed ones with `sudo cp`, clear both layout caches (`sudo rm -f /System/Library/Caches/com.apple.IntlDataCache.le*` and `rm -f "$(getconf DARWIN_USER_CACHE_DIR)"com.apple.IntlDataCache.le*`), and log out and back in. The next `brew upgrade` or `brew reinstall --cask latam-keyboard` puts the released files back.
+To run the test on an unreleased change without uninstalling, test a renamed copy: copy the bundle to a scratch folder, give it its own bundle id (for example `…latamtest`), names (`Latin American Test - A`) and keyboard IDs (`-5101`, `-5103`, `-5105`), with matching `KLInfo_` entries and `TISInputSourceID`s; apply the same substitutions to a copy of `tests/layouttest.swift`; install the copy in `~/Library/Keyboard Layouts`, clear the per-user cache, run the test, and remove the copy and clear the cache again.
+
+To try an unreleased change by eye on a Mac that has the Homebrew install, don't copy the bundle into `~/Library`. Copy the changed files over the installed ones with `sudo cp`, clear both layout caches (`sudo rm -f /System/Library/Caches/com.apple.IntlDataCache.le*` and `rm -f "$(getconf DARWIN_USER_CACHE_DIR)"com.apple.IntlDataCache.le*`), and log out and back in. The next `brew upgrade` or `brew reinstall --cask latam-keyboard` puts the released files back.
 
 ### Talking to macOS's input source API (TIS)
 
@@ -89,6 +91,10 @@ The README's "Thanks" section credits the people who sent pull requests, whose f
 
 To find forks with changes worth looking at, list them (`gh api --paginate repos/neosergio/Latam-Keyboard/forks`) and compare each branch with `gh api repos/neosergio/Latam-Keyboard/compare/master...<owner>:<repo>:<branch>`; only branches with `ahead_by` > 0 have their own commits. As of November 2026, all 62 forks were reviewed: only PaoloLuciano (`|` for keyboards without key 10, adopted in 1.3.0), devacran (a security audit and a way to choose between A and B, adopted in the README and the ASCII test) and EzraLopez (Type A renamed for El Salvador, no key changes) had their own commits.
 
+Two independent repos were also reviewed. geriom/Latam-mac (2018) is based on this project and credits it, with a Linux-style Option layer; its `<` and `>` on Shift + Option + Z and X were adopted in 1.4.0. apercova/macos-latam-iso-keyboard (2025) isn't a copy: it's Apple's Latin American layout with only the key below Esc changed, made in Ukelele.
+
+To compare a layout from another repo key by key, resolve its key maps (`baseMapSet`, actions in state `none`) per modifier and diff them against ours and against Apple's `com.apple.keylayout.LatinAmerican`, whose key data `UCKeyTranslate` can read without enabling it.
+
 ## Pages outside this repo
 
 - **[infante.io/latam-keyboard](https://infante.io/latam-keyboard/)** is the project page, and the only user documentation in Spanish. It lives in the `neosergio/infante-io` repo (`latam-keyboard/index.html`, with every string in Spanish and English in `window.i18n`, and images in `assets/img/latam-keyboard/` copied from `docs/images/`). The repo's GitHub homepage points there, and the README links to it near the top. Its version number comes from the latest GitHub release on its own, so a release doesn't need a change there. **When something user-facing changes** (the install command, which type to choose, what a key types, the icon), update the README and that page together. Follow the infante-io repo's own CLAUDE.md, and pull before committing there: it often has newer commits from other work.
@@ -109,7 +115,8 @@ A malformed `.keylayout` is ignored by macOS with no error message. The layout j
 - **A**: for external keyboards. **B**: for built-in keyboards. **C**: for some gaming keyboards.
   - The main difference is that the ISO key (code `10`, next to the left Shift key) and the key below Esc (code `50`) are swapped: A has `<` on 10 and `|` on 50, while B and C have the reverse.
   - With Shift, A types `>` on 10 and `°` on 50, and B types `°` on 10 and `>` on 50. **C intentionally pairs them differently** (`|` with `>` on 10, `<` with `°` on 50), because some gaming keyboards are labeled that way. Don't "fix" it.
-  - Keyboards without key 10 (Apple's US keyboards, the Logitech MX Keys Mini) can't type whatever only lives there. For them, B and C also put `|` on Option + key 50 and Caps Lock + Option + key 50 (since 1.3.0, idea from the PaoloLuciano fork, which used Control). A isn't meant for those keyboards: it would need both `<` and `>`, and Shift + Option + key 50 must stay `` ` ``, the only direct way to type a backtick. `tests/run.sh` checks both.
+  - Keyboards without key 10 (Apple's US keyboards, the Logitech MX Keys Mini) can't type whatever only lives there. For them, B and C also put `|` on Option + key 50 and Caps Lock + Option + key 50 (since 1.3.0, idea from the PaoloLuciano fork, which used Control). A doesn't get it: Shift + Option + key 50 must stay `` ` ``, the only direct way to type a backtick.
+  - In every type, Shift + Option + Z and X (codes 6 and 7, map 4) type `<` and `>`, like AltGr + Shift + Z and X on Linux (since 1.4.0, idea from geriom/Latam-mac). With that, every layout, A included, can type all printable ASCII without key 10. `tests/run.sh` checks all of this.
   - **When you swap keys 10 and 50, swap them in every key map** (plain, Shift, Caps Lock, Option and so on), not only plain and Shift. B's Caps Lock map was left with A's arrangement for years (fixed in 1.1.3, found in Keyboard Viewer).
 - Version 1.2.0 removed Type D (a workaround for the Command bug fixed in 1.0.3, which had become the same as A except with Option) and the White variants of A, B and C (replaced by the outlined icon).
 

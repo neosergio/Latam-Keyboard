@@ -14,9 +14,11 @@ let bundleID = "com.github.neosergio.keyboardlayout.latam"
 
 // Expected characters on key 10 (ISO key) and key 50, without and with Shift (nil = not checked).
 // Type C's Shift pairing (| with >, < with °) is intentional: some gaming keyboards work that way.
-// withoutKey10: the layout must also work on keyboards without key 10 (like Apple's US keyboards):
-// Option + key 50 types | there, and every printable ASCII character must be typeable without
-// key 10. Idea from the PaoloLuciano fork. Type A is meant for keyboards that have key 10.
+// Every layout must also work on keyboards without key 10 (like Apple's US keyboards): Shift +
+// Option + Z and X type < and > (idea from geriom/Latam-mac, which follows Linux's AltGr), and
+// every printable ASCII character must be typeable without key 10.
+// withoutKey10: Option + key 50 also types | (idea from the PaoloLuciano fork). Type A has | on
+// key 50 already.
 let layouts: [(name: String, isoKeys: (plain: String, shift: String)?, withoutKey10: Bool)] = [
     ("Latin American - A", ("<|", ">°"), false),
     ("Latin American - B", ("|<", "°>"), true),
@@ -109,6 +111,9 @@ func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?, withoutKe
         // Caps Lock must not move these keys (B had A's arrangement under Caps Lock).
         checks.append(("Caps Lock: keys 10 and 50", type(data, [(10, caps), (50, caps)]), iso.plain))
     }
+    checks.append(("Shift + Option + Z and X", type(data, [(6, shift | option), (7, shift | option)]), "<>"))
+    checks.append(("Caps Lock + Shift + Option + Z and X",
+                   type(data, [(6, caps | shift | option), (7, caps | shift | option)]), "<>"))
     if withoutKey10 {
         checks.append(("Option + key 50", type(data, [(50, option)]), "|"))
         checks.append(("Caps Lock + Option + key 50", type(data, [(50, caps | option)]), "|"))
@@ -118,7 +123,7 @@ func keyChecks(_ data: Data, isoKeys: (plain: String, shift: String)?, withoutKe
         String(printableASCII.subtracting(typeableASCII(data, skipping: skipped)).sorted())
     }
     checks.append(("ASCII characters missing", missing([]), ""))
-    if withoutKey10 { checks.append(("ASCII characters missing without key 10", missing([10]), "")) }
+    checks.append(("ASCII characters missing without key 10", missing([10]), ""))
     // Shift + Option + key 50 is the only direct way to type a backtick; keep it.
     checks.append(("Shift + Option + key 50", type(data, [(50, shift | option)]), "`"))
     return checks

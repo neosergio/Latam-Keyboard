@@ -524,8 +524,8 @@
             <key code="3" output="&#xCF;"/>
             <key code="4" output="&#xD3;"/>
             <key code="5" output="&#x2DD;"/>
-            <key code="6" output="&#xB8;"/>
-            <key code="7" output="&#x2DB;"/>
+            <key code="6" output="&#x003C;"/>
+            <key code="7" output="&#x003E;"/>
             <key code="8" output="&#xC7;"/>
             <key code="9" output="&#x25CA;"/>
             <key code="10" output="&#xB1;"/>

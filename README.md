@@ -64,7 +64,7 @@ The main difference between the types is which key types `<` and which types `|`
 
 - _**Type C**_: for some gaming keyboards. It types the same as Type B, except that with Shift those two keys give `>` and `°` the other way around, to match how those keyboards are labeled.
 
-**If your keyboard has no key between the left Shift key and Z**, like Apple keyboards with the US layout or the Logitech MX Keys Mini, use Type B. `<` and `>` are on the key below Esc, and `|` is on **Option + the key below Esc** (also in Type C).
+**If your keyboard has no key between the left Shift key and Z**, like Apple keyboards with the US layout or the Logitech MX Keys Mini, use Type B. `<` and `>` are on the key below Esc, and `|` is on **Option + the key below Esc** (also in Type C). In every type, **Shift + Option + Z** and **Shift + Option + X** also type `<` and `>`, as AltGr + Shift + Z and X do on Linux.
 
 Caps Lock only changes letters, including `Ñ`. The other keys keep their characters:
 
@@ -102,7 +102,7 @@ A keyboard layout sits between your keyboard and everything you type, so it's fa
 This project got better thanks to people who reported problems, dug into their causes, sent pull requests and shared their own versions:
 
 - **Pull requests:** [davidalejandroaguilar](https://github.com/davidalejandroaguilar) swapped `<` and `|` for external keyboards (#2), and [scvsoft-cruzfernandez](https://github.com/scvsoft-cruzfernandez) added Type D, a workaround for the Command shortcut bug (#7).
-- **Forks whose ideas made it in:** [PaoloLuciano](https://github.com/PaoloLuciano) showed how to type `|` on keyboards without a key next to the left Shift key, and [devacran](https://github.com/devacran) audited the files and found a better way to choose between Types A and B.
+- **Forks and other versions whose ideas made it in:** [PaoloLuciano](https://github.com/PaoloLuciano) showed how to type `|` on keyboards without a key next to the left Shift key, [devacran](https://github.com/devacran) audited the files and found a better way to choose between Types A and B, and [geriom](https://github.com/geriom)'s Linux-style version ([Latam-mac](https://github.com/geriom/Latam-mac)) put `<` and `>` on Option + Shift + Z and X.
 - **Finding causes:** [mig8447](https://github.com/mig8447) found why Cmd+`+` didn't work (#6), [EJFuchs](https://github.com/EJFuchs) noticed that Apple's Spanish layout kept Word in Spanish (#1), [lasky78](https://github.com/lasky78) found a workaround for the Command bug in Ukelele (#11), and [PREngineer](https://github.com/PREngineer) made the first white icon (#3).
 - **Reports and testing:** [federicotdn](https://github.com/federicotdn), [gmartinezkl](https://github.com/gmartinezkl), [josebarona](https://github.com/josebarona), [VolodyaCO](https://github.com/VolodyaCO), [martinsam16](https://github.com/martinsam16), [el-mimoso](https://github.com/el-mimoso), [einerrafael](https://github.com/einerrafael), [Argandov](https://github.com/Argandov), [aldotru](https://github.com/aldotru), [aldotru96](https://github.com/aldotru96) and [gynura](https://github.com/gynura).
 
